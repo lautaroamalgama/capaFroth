@@ -1,23 +1,32 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Products from './components/Products';
+import About from './components/About';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import ProductDetail from './pages/ProductDetail';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="/frog.png" className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          La app del gran froth
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Hero />
+              <Products />
+              <About />
+              <Contact />
+            </>
+          } />
+          <Route path="/producto/:slug" element={<ProductDetail />} />
+        </Routes>
+      </main>
+      <Footer />
+    </>
   );
 }
 
